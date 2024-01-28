@@ -32,7 +32,7 @@ export default {
 <template>
   <nav class="sticky left-0 top-0 z-50 w-full bg-red-500 shadow-md">
     <div
-      class="ease container relative z-50 flex items-center justify-between bg-red-500 pb-4 pt-3"
+      class="ease container relative z-50 flex items-center justify-between bg-red-500 pb-4 pt-3 shadow-md md:rounded-b-lg lg:shadow-none"
     >
       <router-link :to="paths.HOME" class="logo">
         <MainLogo class="-translate-y-0.5 translate-x-1 -rotate-12 text-white" />
