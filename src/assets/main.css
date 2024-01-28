@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Advertising-Script';
+  src: url('../../public/fonts/advertising-script/advertising-script.ttf');
+}
+
+@font-face {
+  font-family: 'Racoti';
+  src: url('../../public/fonts/racoti/RacotiPersonalUse-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Racoti-thin';
+  src: url('../../public/fonts/racoti/RacotiPersonalUse-Thin.otf');
+}
+
+@font-face {
+  font-family: 'Austen';
+  src: url('../../public/fonts/austen/Austen-Regular.ttf');
+}
