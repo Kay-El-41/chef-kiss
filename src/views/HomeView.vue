@@ -1,13 +1,14 @@
 <script>
 import MainLayout from '@/layouts/MainLayout.vue'
+import HeroSection from '@/components/home/HeroSection.vue'
 export default {
-  components: { MainLayout }
+  components: { MainLayout, HeroSection }
 }
 </script>
 
 <template>
   <MainLayout>
-    <div><h1>Hell yah</h1></div>
+    <HeroSection />
   </MainLayout>
 </template>
 
