@@ -36,10 +36,10 @@ export default {
 
 <template>
   <section class="h-full w-full xl:h-[calc(100dvh-80px)]">
-    <div class="h-full xl:relative xl:flex xl:flex-row-reverse xl:items-center">
-      <div
-        class="mobile-swiper relative w-full sm:container xl:absolute xl:w-3/5 2xl:mr-[7rem] 2xl:w-1/2"
-      >
+    <div
+      class="container h-full xl:relative xl:flex xl:flex-row xl:items-center xl:gap-5 2xl:gap-0"
+    >
+      <div class="mobile-swiper relative w-full xl:w-1/2 2xl:mr-[7rem]">
         <SwiperContainer
           :style="{
             '--swiper-theme-color': '#ef4444'
@@ -75,7 +75,7 @@ export default {
         </SwiperContainer>
       </div>
 
-      <div class="web container relative h-1/2 text-center xl:text-left">
+      <div class="web relative h-1/2 text-center xl:h-fit xl:text-left">
         <h1
           class="my-3 font-body text-4xl font-bold capitalize leading-normal sm:text-5xl 2xl:text-6xl"
         >
@@ -83,17 +83,17 @@ export default {
           to
           <span class="font-logoFont text-red-500">next level</span>
         </h1>
-        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+        <p class="text-lg tracking-wider md:text-xl md:leading-loose">
           Browse from thousands of recipe
         </p>
-        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+        <p class="text-lg tracking-wider md:text-xl md:leading-loose">
           Search by types, ingredients, or country
         </p>
-        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+        <p class="text-lg tracking-wider md:text-xl md:leading-loose">
           Cooking has never been easier
         </p>
         <button
-          class="my-5 rounded-xl bg-red-500 px-8 py-3 text-lg text-white shadow md:text-2xl xl:text-xl xl:hover:shadow-xl xl:hover:brightness-110 xl:active:brightness-90"
+          class="mt-5 rounded-xl bg-red-500 px-8 py-3 text-lg text-white shadow md:text-2xl xl:text-xl xl:hover:shadow-xl xl:hover:brightness-110 xl:active:brightness-90"
           @click="handleClickPrimaryAction"
         >
           Browse Now
