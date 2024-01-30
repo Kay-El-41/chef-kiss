@@ -6,6 +6,7 @@ import heroImage4 from '@/assets/imgs/hero-recipe-4.jpg'
 import heroImage5 from '@/assets/imgs/hero-recipe-5.jpg'
 import heroImage6 from '@/assets/imgs/hero-recipe-6.jpg'
 import heroImage7 from '@/assets/imgs/hero-recipe-7.jpg'
+import * as paths from '@/paths'
 export default {
   name: 'HeroSection',
   components: {
@@ -24,26 +25,45 @@ export default {
         heroImage7
       ]
     }
+  },
+  methods: {
+    handleClickPrimaryAction() {
+      this.$router.push(paths.BROWSE_ALL_RECIPE)
+    }
   }
 }
 </script>
 
 <template>
-  <section class="h-full w-full">
-    <div class="h-full">
-      <div class="hero-swiper relative w-full">
+  <section class="h-full w-full xl:h-[calc(100dvh-80px)]">
+    <div class="h-full xl:relative xl:flex xl:flex-row-reverse xl:items-center">
+      <div
+        class="mobile-swiper relative w-full sm:container xl:absolute xl:w-3/5 2xl:mr-[7rem] 2xl:w-1/2"
+      >
         <SwiperContainer
           :style="{
             '--swiper-theme-color': '#ef4444'
+          }"
+          :autoplay="{
+            delay: 2000
           }"
           :pagination="{
             clickable: true,
             type: 'bullets'
           }"
           centered-slide="true"
+          :breakpoints="{
+            1024: {
+              slidesPerView: 1.4,
+              spaceBetween: 0,
+              centeredSlides: true,
+              loop: true,
+              grabCursor: true
+            }
+          }"
         >
           <SwiperSlide v-for="(recipe, idx) in heroRecipesImgs" :key="idx">
-            <div class="w-full p-8">
+            <div class="w-full p-8 sm:px-3">
               <img
                 :src="recipe"
                 alt="food"
@@ -54,13 +74,42 @@ export default {
           </SwiperSlide>
         </SwiperContainer>
       </div>
-      <div
-        class="container h-1/2 text-center font-body text-4xl font-bold capitalize leading-normal"
-      >
-        <h1>Take your cooking to next level</h1>
+
+      <div class="web container relative h-1/2 text-center xl:text-left">
+        <h1
+          class="my-3 font-body text-4xl font-bold capitalize leading-normal sm:text-5xl 2xl:text-6xl"
+        >
+          Elevate your <br class="hidden md:inline" /><span class="font-logoFont">cooking</span>
+          to
+          <span class="font-logoFont text-red-500">next level</span>
+        </h1>
+        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+          Browse from thousands of recipe
+        </p>
+        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+          Search by types, ingredients, or country
+        </p>
+        <p class="font-header text-lg font-bold tracking-wider md:text-xl md:leading-loose">
+          Cooking has never been easier
+        </p>
+        <button
+          class="my-5 rounded-xl bg-red-500 px-8 py-3 text-lg text-white shadow md:text-2xl xl:text-xl xl:hover:shadow-xl xl:hover:brightness-110 xl:active:brightness-90"
+          @click="handleClickPrimaryAction"
+        >
+          Browse Now
+        </button>
       </div>
     </div>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+.web-food-img:hover {
+  transform: rotateX(180deg);
+  transform-origin: center;
+}
+
+.web-food-img {
+  @apply w-fit transition-transform duration-500 *:size-44 *:object-cover *:rotate-45;
+}
+</style>
