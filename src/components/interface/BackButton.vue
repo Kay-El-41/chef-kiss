@@ -12,7 +12,7 @@ export default {
 </script>
 
 <template>
-  <button class="flex items-center gap-1 pb-6 hover:text-red-500" @click="goBack">
+  <button class="flex items-center gap-1 hover:text-red-500" @click="goBack">
     <IconBack />Back
   </button>
 </template>

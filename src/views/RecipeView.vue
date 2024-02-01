@@ -10,7 +10,7 @@ export default {
     return {
       meal: null,
       id: this.$route.params.id,
-      query: this.$route.query.q,
+      query: this.$router.currentRoute.value.query.q,
       fetchError: false
     }
   },
@@ -44,11 +44,17 @@ export default {
     <!-- <div v-if="fetchError">SHIT WE ARE DONE</div> -->
     <!-- v-if="!fetchError" -->
     <section class="container py-6">
-      <BackButton />
+      <div class="pb-6">
+        <BackButton />
+      </div>
       <div>
         <div class="lg:flex lg:gap-10">
           <div class="shrink-0 lg:w-1/2">
-            <img :src="meal?.strMealThumb" :alt="meal?.strMeal" class="rounded-lg" />
+            <img
+              :src="meal?.strMealThumb"
+              :alt="meal?.strMeal"
+              class="w-full rounded-lg object-cover"
+            />
           </div>
           <div class="lg:flex lg:w-1/2 lg:flex-col lg:justify-between">
             <div>

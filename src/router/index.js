@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import RecipeViewVue from '@/views/RecipeView.vue'
+import BrowseView from '@/views/BrowseView.vue'
+import ErrorView from '@/views/ErrorView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,17 +32,19 @@ const router = createRouter({
     {
       path: '/browse',
       name: 'browse',
-      component: HomeView
-    },
-    {
-      path: '/about-us',
-      name: 'about',
-      component: HomeView
+      component: BrowseView,
+      children: [
+        {
+          path: 'all-recipes',
+          name: 'recipes',
+          component: BrowseView
+        }
+      ]
     },
     {
       path: '/:catchAll(.*)',
       name: 'NotFound',
-      component: HomeView
+      component: ErrorView
     }
   ]
 })

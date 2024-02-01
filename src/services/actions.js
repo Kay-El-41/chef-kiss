@@ -16,8 +16,29 @@ export async function fetchCategoryList() {
   return data
 }
 
+export async function fetchCountryList() {
+  const response = await fetch(`${BASE_URL}/list.php?a=list`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchIngredientList() {
+  const response = await fetch(`${BASE_URL}/list.php?i=list`)
+  const data = await response.json()
+
+  return data
+}
+
 export async function fetchMealRecipeById(id) {
   const response = await fetch(`${BASE_URL}/lookup.php?i=${id}`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchMealRecipeBySearch(word) {
+  const response = await fetch(`${BASE_URL}/search.php?s=${word}`)
   const data = await response.json()
 
   return data
