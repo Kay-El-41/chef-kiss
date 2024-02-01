@@ -51,9 +51,6 @@ export default {
         <li>
           <router-link :to="paths.BROWSE_BY_SEARCH" class="web-link">Search Recipes</router-link>
         </li>
-        <li>
-          <router-link :to="paths.ABOUT_US" class="web-link">About Us</router-link>
-        </li>
       </ul>
 
       <div class="lg:hidden">

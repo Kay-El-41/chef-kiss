@@ -21,7 +21,7 @@ export default {
 
 <template>
   <section>
-    <div class="container mb-10 xl:flex xl:gap-5 2xl:gap-0">
+    <div class="container mb-10 xl:flex xl:gap-5">
       <div
         id="measurements"
         class="mb-5 grid grid-cols-2 md:grid-cols-4 lg:mb-10 xl:w-1/3 xl:grid-cols-2 xl:items-center 2xl:justify-items-end"
@@ -50,7 +50,9 @@ export default {
         <div
           class="details mt-10 lg:mt-0 lg:flex lg:h-full lg:flex-col lg:justify-around xl:justify-center"
         >
-          <h3 class="text-body text-center font-body text-xl font-medium md:text-2xl lg:text-3xl">
+          <h3
+            class="text-body text-center font-header text-xl font-extrabold md:text-2xl lg:text-3xl"
+          >
             For Every Meals
           </h3>
           <div class="mt-5 flex gap-3 lg:flex-col lg:gap-2">
