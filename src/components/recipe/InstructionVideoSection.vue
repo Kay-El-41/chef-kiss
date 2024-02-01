@@ -34,7 +34,7 @@ export default {
     <h2>Instruction Video</h2>
     <IconArrowDown class="text-xl" />
   </div>
-  <div class="" v-show="showInstructionVideo">
+  <div class="overflow-hidden lg:rounded-lg" v-show="showInstructionVideo">
     <Youtube :id="meal?.strYoutube?.split('=')[1]" :title="meal?.strMeal" />
   </div>
 </template>

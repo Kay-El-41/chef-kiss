@@ -1,4 +1,5 @@
 <script>
+import * as paths from '@/paths'
 export default {
   name: 'IngredientCard',
   props: {
@@ -8,6 +9,11 @@ export default {
   data() {
     return {
       ingredientThumb: null
+    }
+  },
+  methods: {
+    goToIngredient() {
+      this.$router.push(paths.BROWSE_BY_INGREDIENTS + '=ingredient')
     }
   },
   watch: {
@@ -22,11 +28,12 @@ export default {
 
 <template>
   <div
-    class="flex w-full flex-col rounded-md border p-3 text-center shadow"
+    class="group flex h-full w-full cursor-pointer flex-col rounded-md border p-3 text-center shadow hover:bg-red-500"
     v-if="ingredient && measure"
+    @click="goToIngredient"
   >
-    <img :src="ingredientThumb" :alt="ingredient" class="mix-blend-multiply" />
-    <p class="mt-3 font-body text-sm">{{ ingredient }}</p>
-    <p>{{ measure }}</p>
+    <img :src="ingredientThumb" :alt="ingredient" />
+    <p class="mt-3 font-body text-sm group-hover:text-white">{{ ingredient }}</p>
+    <p class="group-hover:text-white">{{ measure }}</p>
   </div>
 </template>
