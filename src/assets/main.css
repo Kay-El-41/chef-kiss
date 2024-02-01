@@ -21,3 +21,7 @@
   font-family: 'Austen';
   src: url('../../public/fonts/austen/Austen-Regular.ttf');
 }
+
+.btn-action {
+  @apply shadow xl:hover:shadow-xl xl:hover:brightness-110 xl:active:brightness-90;
+}

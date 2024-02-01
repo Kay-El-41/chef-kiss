@@ -26,11 +26,15 @@ export default {
 </script>
 
 <template>
-  <div class="mx-auto flex w-2/3 flex-col overflow-hidden rounded-lg shadow-md lg:mx-0 lg:w-1/3">
-    <div>
-      <img :src="mealDetail?.strMealThumb" :alt="mealDetail?.strMeal" />
+  <div class="mx-auto flex w-full overflow-hidden rounded-lg border shadow-md lg:mx-0 lg:w-2/3">
+    <div class="w-2/5 shrink-0 lg:w-1/2">
+      <img
+        :src="mealDetail?.strMealThumb"
+        :alt="mealDetail?.strMeal"
+        class="aspect-square h-full object-cover"
+      />
     </div>
-    <div class="space-y-2 px-3 py-4">
+    <div class="space-y-2 px-3 py-4 lg:flex lg:w-1/2 lg:flex-col lg:justify-between">
       <p class="font-body text-lg">{{ mealDetail?.strMeal }}</p>
       <p class="text-base">{{ mealDetail?.strCategory }}, {{ mealDetail?.strArea }}</p>
       <div class="flex flex-wrap gap-2">
@@ -45,7 +49,7 @@ export default {
       <button
         v-show="mealDetail?.idMeal"
         @click="goToRecipePage"
-        class="w-full cursor-pointer rounded-lg bg-red-500 py-2 text-white"
+        class="btn-action w-full cursor-pointer rounded-lg bg-red-500 py-2 text-white"
       >
         View Recipe
       </button>

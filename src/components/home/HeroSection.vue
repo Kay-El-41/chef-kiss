@@ -35,9 +35,9 @@ export default {
 </script>
 
 <template>
-  <section class="h-full w-full xl:h-[calc(100dvh-80px)]">
+  <section class="mb-20 w-full xl:mb-0 xl:h-[calc(100dvh-80px)]">
     <div
-      class="container h-full xl:relative xl:flex xl:flex-row xl:items-center xl:gap-5 2xl:gap-0"
+      class="container flex h-full flex-col justify-center xl:relative xl:flex xl:-translate-y-5 xl:flex-row xl:items-center xl:gap-5 2xl:gap-0"
     >
       <div class="mobile-swiper relative w-full xl:w-1/2 2xl:mr-[7rem]">
         <SwiperContainer
@@ -75,7 +75,7 @@ export default {
         </SwiperContainer>
       </div>
 
-      <div class="web relative h-1/2 text-center xl:h-fit xl:text-left">
+      <div class="web relative h-1/2 text-center md:mt-10 xl:mt-0 xl:h-fit xl:text-left">
         <h1
           class="my-3 font-body text-4xl font-bold capitalize leading-normal sm:text-5xl 2xl:text-6xl"
         >
@@ -93,7 +93,7 @@ export default {
           Cooking has never been easier
         </p>
         <button
-          class="mt-5 rounded-xl bg-red-500 px-8 py-3 text-lg text-white shadow md:text-2xl xl:text-xl xl:hover:shadow-xl xl:hover:brightness-110 xl:active:brightness-90"
+          class="btn-action mt-5 rounded-xl bg-red-500 px-8 py-3 text-lg text-white md:text-2xl xl:text-xl"
           @click="handleClickPrimaryAction"
         >
           Browse Now

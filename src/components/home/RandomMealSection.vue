@@ -12,7 +12,7 @@ export default {
     }
   },
   components: { IconVideo, IconMeasurement, IconInstructions, MealCard },
-  async mounted() {
+  async created() {
     const { meals } = await actions.fetchRandomMeal()
     this.singleMeal = meals[0]
   }
@@ -20,59 +20,57 @@ export default {
 </script>
 
 <template>
-  <section class="mt-8 py-10">
-    <div class="container">
-      <h2
-        class="text-body py-10 text-center font-body text-2xl font-semibold md:text-3xl lg:text-4xl xl:text-left"
+  <section>
+    <div class="container mb-10 xl:flex xl:gap-5 2xl:gap-0">
+      <div
+        id="measurements"
+        class="mb-5 grid grid-cols-2 md:grid-cols-4 lg:mb-10 xl:w-1/3 xl:grid-cols-2 xl:items-center 2xl:justify-items-end"
       >
-        ^Why choose Chef's Kiss?^
-      </h2>
-      <div class="details grid grid-cols-2 lg:grid-cols-4">
-        <div class="flex flex-col items-center p-8">
-          <p class="font-header text-2xl font-extrabold text-red-500 drop-shadow md:text-3xl">
-            300+
-          </p>
-          <p class="font-body text-lg">Meals</p>
+        <div class="statistics">
+          <p class="">300+</p>
+          <span class="font-body text-lg">Recipes</span>
         </div>
-        <div class="flex flex-col items-center p-8">
-          <p class="font-header text-2xl font-extrabold text-red-500 drop-shadow md:text-3xl">
-            500+
-          </p>
-          <p class="font-body text-lg">Ingredients</p>
+        <div class="statistics">
+          <p class="">25+</p>
+          <span class="font-body text-lg">Countries</span>
         </div>
-        <div class="flex flex-col items-center p-8">
-          <p class="font-header text-2xl font-extrabold text-red-500 drop-shadow md:text-3xl">
-            25+
-          </p>
-          <p class="font-body text-lg">Countries</p>
+        <div class="statistics">
+          <p class="">500+</p>
+          <span class="font-body text-lg">Ingredients</span>
         </div>
-        <div class="flex flex-col items-center p-8">
-          <p class="font-header text-2xl font-extrabold text-red-500 drop-shadow md:text-3xl">
-            10+
-          </p>
-          <p class="font-body text-lg">Categories</p>
+        <div class="statistics">
+          <p class="">10+</p>
+          <span class="font-body text-lg">Categories</span>
         </div>
       </div>
-      <div class="lg:flex lg:justify-center lg:gap-8 xl:py-10 2xl:justify-start">
+
+      <div class="lg:mb-10 lg:flex lg:items-start lg:justify-center lg:gap-10 xl:gap-5">
         <MealCard :mealDetail="singleMeal" />
-        <div class="details">
-          <h3
-            class="text-body py-5 text-center font-body text-xl font-medium md:text-2xl lg:text-left lg:text-3xl"
-          >
+
+        <div
+          class="details mt-10 lg:mt-0 lg:flex lg:h-full lg:flex-col lg:justify-around xl:justify-center"
+        >
+          <h3 class="text-body text-center font-body text-xl font-medium md:text-2xl lg:text-3xl">
             For Every Meals
           </h3>
-          <div class="flex flex-col items-center gap-5 lg:items-start">
-            <div class="flex items-center gap-2">
-              <IconInstructions />
-              <span>Detailed Instructions</span>
+          <div class="mt-5 flex gap-3 lg:flex-col lg:gap-2">
+            <div
+              class="flex w-1/3 flex-col items-center justify-center gap-2 p-3 text-center lg:w-full lg:flex-row lg:justify-start lg:gap-3 lg:text-left"
+            >
+              <IconInstructions class="text-3xl text-red-500 lg:shrink-0" />
+              <span class="xl:text font-body">Detailed Instructions</span>
             </div>
-            <div class="flex items-center gap-2">
-              <IconMeasurement />
-              <span>Ingredients with Measurements</span>
+            <div
+              class="flex w-1/3 flex-col items-center justify-center gap-2 p-3 text-center lg:w-full lg:flex-row lg:justify-start lg:gap-3 lg:text-left"
+            >
+              <IconMeasurement class="text-3xl text-red-500 lg:shrink-0" />
+              <span class="xl:text font-body">Ingredients' Measurements</span>
             </div>
-            <div class="flex items-center gap-2">
-              <IconVideo />
-              <span>Youtube Videos</span>
+            <div
+              class="flex w-1/3 flex-col items-center justify-center gap-2 p-3 text-center lg:w-full lg:flex-row lg:justify-start lg:gap-3 lg:text-left"
+            >
+              <IconVideo class="text-3xl text-red-500 lg:shrink-0" />
+              <span class="xl:text font-body">Instruction Videos</span>
             </div>
           </div>
         </div>
@@ -80,3 +78,13 @@ export default {
     </div>
   </section>
 </template>
+
+<style scoped>
+.statistics {
+  @apply flex flex-col items-center p-5 rounded-lg;
+}
+
+.statistics > p {
+  @apply font-header text-2xl font-extrabold text-red-500 drop-shadow md:text-3xl;
+}
+</style>

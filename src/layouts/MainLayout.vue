@@ -11,8 +11,8 @@ export default {
 </script>
 
 <template>
+  <Navbar />
   <div>
-    <Navbar />
     <slot></slot>
   </div>
 </template>

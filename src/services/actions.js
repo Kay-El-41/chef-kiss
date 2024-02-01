@@ -6,3 +6,10 @@ export async function fetchRandomMeal() {
 
   return data
 }
+
+export async function fetchCategoryList() {
+  const response = await fetch(`${BASE_URL}/categories.php`)
+  const data = await response.json()
+
+  return data
+}
