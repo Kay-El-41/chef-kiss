@@ -9,16 +9,12 @@ export default {
   name: 'CategoryBar',
   data() {
     return {
-      search: '',
-      showMore: false
+      search: ''
     }
   },
   emits: ['submitCategory'],
 
   methods: {
-    handleClickShowMore() {
-      this.showMore = !this.showMore
-    },
     handleSubmitSearch(category) {
       this.$emit('submitCategory', category)
     }
@@ -28,29 +24,15 @@ export default {
 </script>
 
 <template>
-  <div class="mb-3 grid w-full grid-cols-4 gap-3">
-    <BrowseCategoryCard
-      v-for="category in categories?.slice(0, 4)"
-      :key="category?.idCategory"
-      :category="category"
-      :currentCategoryId="currentCategoryId"
-      @changeCategory="handleSubmitSearch"
-    />
-  </div>
-
-  <div class="grid w-full grid-cols-4 gap-3" v-show="showMore">
-    <BrowseCategoryCard
-      v-for="category in categories?.slice(4)"
-      :key="category?.idCategory"
-      :category="category"
-      :currentCategoryId="currentCategoryId"
-      @changeCategory="handleSubmitSearch"
-    />
-  </div>
-  <button
-    class="btn-action my-3 w-full rounded-lg bg-red-500 py-2 text-white"
-    @click="handleClickShowMore"
+  <div
+    class="mb-3 flex gap-3 overflow-scroll scrollbar-none md:grid md:w-full md:grid-cols-5 lg:grid-cols-7"
   >
-    {{ showMore ? 'See Less' : 'See More' }}
-  </button>
+    <BrowseCategoryCard
+      v-for="category in categories"
+      :key="category?.idCategory"
+      :category="category"
+      :currentCategoryId="currentCategoryId"
+      @changeCategory="handleSubmitSearch"
+    />
+  </div>
 </template>

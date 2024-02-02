@@ -22,14 +22,12 @@ export default {
 <template>
   <div
     :class="currentCategoryId === category?.idCategory && 'bg-red-500 text-white'"
-    class="flex cursor-pointer flex-col items-center justify-center rounded-md border px-1 py-2 shadow-sm"
+    class="flex w-24 shrink-0 cursor-pointer flex-col items-center justify-center rounded-md border px-1 py-2 shadow-sm hover:border-red-500 md:w-full"
     @click="onClickCategoryCard"
   >
-    <img
-      :src="category?.strCategoryThumb"
-      :alt="category?.strCategory"
-      class="w-16 shrink-0 rounded-md"
-    />
+    <div class="shrink-0">
+      <img :src="category?.strCategoryThumb" :alt="category?.strCategory" class="w-16 rounded-md" />
+    </div>
     <p class="w-full truncate text-center">{{ category?.strCategory }}</p>
   </div>
 </template>

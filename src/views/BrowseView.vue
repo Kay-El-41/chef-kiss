@@ -5,13 +5,28 @@ import CategoryBar from '@/components/browse/CategoryBar.vue'
 import BackButton from '@/components/interface/BackButton.vue'
 import BrowseMethods from '@/components/browse/BrowseMethods.vue'
 import * as actions from '@/services/actions'
+import CountryBar from '@/components/browse/CountryBar.vue'
+import AlphabetBar from '@/components/browse/AlphabetBar.vue'
+import IngredientBar from '@/components/browse/IngredientBar.vue'
 
 export default {
-  components: { MainLayout, BackButton, SearchBar, BrowseMethods, CategoryBar },
+  components: {
+    MainLayout,
+    BackButton,
+    SearchBar,
+    BrowseMethods,
+    CategoryBar,
+    CountryBar,
+    AlphabetBar,
+    IngredientBar
+  },
   data() {
     return {
       search: '',
       currentCategoryId: '',
+      currentCountry: '',
+      currentAlphabet: '',
+      currentIngredient: '',
       recipes: [],
       categories: [],
       countries: [],
@@ -30,6 +45,14 @@ export default {
 
     this.currentCategoryId =
       this.$router.currentRoute.value.query.q || this.categories[0]?.idCategory || null
+
+    this.currentCountry =
+      this.$router.currentRoute.value.query.q || this.countries[0]?.strArea || null
+
+    this.currentAlphabet = this.$router.currentRoute.value.query.q || 'A' || null
+
+    this.currentIngredient =
+      this.$router.currentRoute.value.query.q || this.ingredients[0]?.strIngredient || null
   },
   computed: {
     currentMethod() {
@@ -44,6 +67,11 @@ export default {
       const { meals } = await actions.fetchMealRecipeBySearch(word)
       this.recipes = meals
     },
+    handleChangeAlphabet(alphabet) {
+      this.search = alphabet
+      this.currentAlphabet = alphabet
+      this.$router.replace({ query: { method: 'alphabet', q: alphabet } })
+    },
     handleChangeCategory(category) {
       this.search = category.idCategory
       this.currentCategoryId = category.idCategory
@@ -52,6 +80,28 @@ export default {
         query: {
           method: 'category',
           q: category.idCategory
+        }
+      })
+    },
+    handleChangeCountry(country) {
+      this.search = country.strArea
+      this.currentCountry = country.strArea
+
+      this.$router.replace({
+        query: {
+          method: 'country',
+          q: country.strArea
+        }
+      })
+    },
+    handleChangeIngredient(ingredient) {
+      this.search = ingredient.strIngredient
+      this.currentIngredient = ingredient.strIngredient
+
+      this.$router.replace({
+        query: {
+          method: 'ingredient',
+          q: ingredient.strIngredient
         }
       })
     },
@@ -74,12 +124,32 @@ export default {
           @changeBrowseMethod="handleChangeBrowseMethods"
         />
         <div>
-          <SearchBar @submitSearch="handleSearchInput" v-if="currentMethod === 'search'" />
+          <SearchBar
+            @submitSearch="handleSearchInput"
+            v-if="currentMethod === 'search' || currentMethod === 'alphabet'"
+          />
+          <AlphabetBar
+            @submitSearch="handleChangeAlphabet"
+            v-if="currentMethod === 'search' || currentMethod === 'alphabet'"
+            :currentAlphabet="currentAlphabet"
+          />
           <CategoryBar
             v-if="currentMethod === 'category'"
             :categories="categories"
             :currentCategoryId="currentCategoryId"
             @submitCategory="handleChangeCategory"
+          />
+          <CountryBar
+            v-if="currentMethod === 'country'"
+            :countries="countries"
+            :currentCountry="currentCountry"
+            @submitCountry="handleChangeCountry"
+          />
+          <IngredientBar
+            v-if="currentMethod === 'ingredient'"
+            :ingredients="ingredients"
+            :currentIngredient="currentIngredient"
+            @submitIngredient="handleChangeIngredient"
           />
         </div>
       </div>

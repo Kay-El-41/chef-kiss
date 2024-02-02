@@ -3,7 +3,7 @@ export default {
   name: 'BrowseMethods',
   emits: ['changeBrowseMethod'],
   props: {
-    currentMethod: 'search' || 'alphabet' || 'category' || 'country'
+    currentMethod: 'search' || 'category' || 'country' || 'ingredient'
   },
   methods: {
     onClickMethod(name) {
@@ -14,9 +14,7 @@ export default {
 </script>
 
 <template>
-  <div
-    class="flex w-full justify-around gap-1 *:rounded-lg *:border *:border-red-500 *:px-3 *:py-1"
-  >
+  <div class="flex w-full justify-center *:border-b *:border-red-500 *:px-3 *:py-1 lg:gap-3">
     <button
       @click="() => onClickMethod('search')"
       :class="currentMethod === 'search' && 'bg-red-500 text-white'"
@@ -36,10 +34,10 @@ export default {
       Country
     </button>
     <button
-      @click="() => onClickMethod('alphabet')"
-      :class="currentMethod === 'alphabet' && 'bg-red-500 text-white'"
+      @click="() => onClickMethod('ingredient')"
+      :class="currentMethod === 'ingredient' && 'bg-red-500 text-white'"
     >
-      Alphabet
+      Ingredient
     </button>
   </div>
 </template>
