@@ -14,7 +14,9 @@ export default {
 </script>
 
 <template>
-  <div class="flex w-full justify-around *:rounded-xl *:border *:border-red-500 *:px-3 *:py-1">
+  <div
+    class="flex w-full justify-around gap-1 *:rounded-lg *:border *:border-red-500 *:px-3 *:py-1"
+  >
     <button
       @click="() => onClickMethod('search')"
       :class="currentMethod === 'search' && 'bg-red-500 text-white'"

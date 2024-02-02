@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       search: '',
+      currentCategoryId: '',
       recipes: [],
       categories: [],
       countries: [],
@@ -26,6 +27,9 @@ export default {
 
     const { categories } = await actions.fetchCategoryList()
     this.categories = categories
+
+    this.currentCategoryId =
+      this.$router.currentRoute.value.query.q || this.categories[0]?.idCategory || null
   },
   computed: {
     currentMethod() {
@@ -40,6 +44,17 @@ export default {
       const { meals } = await actions.fetchMealRecipeBySearch(word)
       this.recipes = meals
     },
+    handleChangeCategory(category) {
+      this.search = category.idCategory
+      this.currentCategoryId = category.idCategory
+
+      this.$router.replace({
+        query: {
+          method: 'category',
+          q: category.idCategory
+        }
+      })
+    },
     handleChangeBrowseMethods(nextMethod) {
       this.$router.replace({ query: { method: nextMethod } })
     }
@@ -49,7 +64,7 @@ export default {
 
 <template>
   <MainLayout>
-    <section class="container py-6">
+    <section class="container min-h-[calc(100dvh-5rem)] py-6">
       <div class="pb-6">
         <BackButton />
       </div>
@@ -60,7 +75,12 @@ export default {
         />
         <div>
           <SearchBar @submitSearch="handleSearchInput" v-if="currentMethod === 'search'" />
-          <CategoryBar />
+          <CategoryBar
+            v-if="currentMethod === 'category'"
+            :categories="categories"
+            :currentCategoryId="currentCategoryId"
+            @submitCategory="handleChangeCategory"
+          />
         </div>
       </div>
     </section>
