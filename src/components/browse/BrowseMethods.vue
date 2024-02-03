@@ -17,7 +17,9 @@ export default {
   <div class="flex w-full justify-center *:border-b *:border-red-500 *:px-3 *:py-1 lg:gap-3">
     <button
       @click="() => onClickMethod('search')"
-      :class="currentMethod === 'search' && 'bg-red-500 text-white'"
+      :class="
+        (currentMethod === 'search' || currentMethod === 'alphabet') && 'bg-red-500 text-white'
+      "
     >
       Search
     </button>

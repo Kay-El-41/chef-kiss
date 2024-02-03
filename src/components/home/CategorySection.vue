@@ -1,7 +1,7 @@
 <script>
+import * as paths from '@/paths'
 import * as actions from '@/services/actions'
 import CategoryCard from '../interface/CategoryCard.vue'
-import * as paths from '@/paths'
 
 export default {
   name: 'CategorySection',
@@ -16,7 +16,7 @@ export default {
       this.$router.push(paths.BROWSE_BY_CATEGORY + '=1')
     }
   },
-  async mounted() {
+  async created() {
     const { categories } = await actions.fetchCategoryList()
     this.categories = categories.splice(0, 10)
   },

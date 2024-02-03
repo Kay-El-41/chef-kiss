@@ -1,10 +1,10 @@
 <script>
-import MainLayout from '@/layouts/MainLayout.vue'
 import * as actions from '@/services/actions'
+import MainLayout from '@/layouts/MainLayout.vue'
+import BackButton from '@/components/interface/BackButton.vue'
 import IngredientSection from '@/components/recipe/IngredientSection.vue'
 import InstructionSection from '@/components/recipe/InstructionSection.vue'
 import InstructionVideoSection from '@/components/recipe/InstructionVideoSection.vue'
-import BackButton from '@/components/interface/BackButton.vue'
 export default {
   data() {
     return {
