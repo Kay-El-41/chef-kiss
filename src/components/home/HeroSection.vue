@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     handleClickPrimaryAction() {
-      this.$router.push(paths.BROWSE_ALL_RECIPE)
+      this.$router.push(paths.BROWSE_BY_CATEGORY + '=1')
     }
   }
 }

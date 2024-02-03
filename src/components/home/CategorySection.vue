@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     goToViewAll() {
-      this.$router.push(paths.BROWSE_BY_CATEGORY + '=all')
+      this.$router.push(paths.BROWSE_BY_CATEGORY + '=1')
     }
   },
   async mounted() {

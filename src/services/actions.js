@@ -37,8 +37,36 @@ export async function fetchMealRecipeById(id) {
   return data
 }
 
-export async function fetchMealRecipeBySearch(word) {
+export async function fetchMealRecipesBySearch(word) {
   const response = await fetch(`${BASE_URL}/search.php?s=${word}`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchMealRecipesByFirstLetter(letter) {
+  const response = await fetch(`${BASE_URL}/search.php?f=${letter}`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchMealRecipesByMainIngredient(ingredient) {
+  const response = await fetch(`${BASE_URL}/filter.php?i=${ingredient}`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchMealRecipesByCategory(category) {
+  const response = await fetch(`${BASE_URL}/filter.php?c=${category}`)
+  const data = await response.json()
+
+  return data
+}
+
+export async function fetchMealRecipesByCountry(country) {
+  const response = await fetch(`${BASE_URL}/filter.php?a=${country}`)
   const data = await response.json()
 
   return data
