@@ -19,7 +19,7 @@ export default {
 
 <template>
   <div
-    class="flex cursor-pointer flex-col items-center gap-2 rounded-xl border text-center shadow-sm hover:border-red-500"
+    class="flex cursor-pointer flex-col items-center gap-2 overflow-hidden rounded-xl border text-center shadow-sm hover:border-red-500"
     @click="onClickMealCard"
   >
     <div class="shrink-0">

@@ -24,8 +24,7 @@ export default {
   },
   data() {
     return {
-      search: '',
-      currentCategoryId: '',
+      currentCategory: '',
       currentCountry: '',
       currentAlphabet: '',
       currentIngredient: '',
@@ -46,8 +45,8 @@ export default {
     const { categories } = await actions.fetchCategoryList()
     this.categories = categories
 
-    this.currentCategoryId =
-      this.$router.currentRoute.value.query.q || this.categories[0]?.idCategory || null
+    this.currentCategory =
+      this.$router.currentRoute.value.query.q || this.categories[0]?.strCategory || null
 
     this.currentCountry =
       this.$router.currentRoute.value.query.q || this.countries[0]?.strArea || null
@@ -60,6 +59,9 @@ export default {
   computed: {
     currentMethod() {
       return this.$router.currentRoute.value.query.method
+    },
+    search() {
+      return this.$router.currentRoute.value.query.q
     }
   },
   watch: {
@@ -82,8 +84,8 @@ export default {
           case 'ingredient':
             this.functionToFetch = 'fetchMealRecipesByMainIngredient'
             break
-
           default:
+            this.functionToFetch = 'fetchMealRecipesBySearch'
             break
         }
       },
@@ -99,17 +101,14 @@ export default {
   },
   methods: {
     async handleSearchInput(word) {
-      this.search = word
       this.$router.replace({ query: { method: 'search', q: word } })
     },
     handleChangeAlphabet(alphabet) {
-      this.search = alphabet
       this.currentAlphabet = alphabet
       this.$router.replace({ query: { method: 'alphabet', q: alphabet } })
     },
     handleChangeCategory(category) {
-      this.search = category.strCategory
-      this.currentCategoryId = category.idCategory
+      this.currentCategory = category.strCategory
 
       this.$router.replace({
         query: {
@@ -119,7 +118,6 @@ export default {
       })
     },
     handleChangeCountry(country) {
-      this.search = country.strArea
       this.currentCountry = country.strArea
 
       this.$router.replace({
@@ -130,7 +128,6 @@ export default {
       })
     },
     handleChangeIngredient(ingredient) {
-      this.search = ingredient.strIngredient
       this.currentIngredient = ingredient.strIngredient
 
       this.$router.replace({
@@ -171,7 +168,7 @@ export default {
           <CategoryBar
             v-if="currentMethod === 'category'"
             :categories="categories"
-            :currentCategoryId="currentCategoryId"
+            :currentCategory="currentCategory"
             @submitCategory="handleChangeCategory"
           />
           <CountryBar
@@ -190,7 +187,7 @@ export default {
       </div>
       <div class="mt-3">
         <!-- Meal Lists -->
-        <RecipesList :recipes="recipes" />
+        <RecipesList :recipes="recipes" :keyword="search" />
       </div>
     </section>
   </MainLayout>

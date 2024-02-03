@@ -4,7 +4,7 @@ import BrowseCategoryCard from '../interface/BrowseCategoryCard.vue'
 export default {
   props: {
     categories: Array,
-    currentCategoryId: String
+    currentCategory: String
   },
   name: 'CategoryBar',
   data() {
@@ -31,7 +31,7 @@ export default {
       v-for="category in categories"
       :key="category?.idCategory"
       :category="category"
-      :currentCategoryId="currentCategoryId"
+      :currentCategory="currentCategory"
       @changeCategory="handleSubmitSearch"
     />
   </div>

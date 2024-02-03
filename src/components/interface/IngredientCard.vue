@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     goToIngredient() {
-      this.$router.push(paths.BROWSE_BY_INGREDIENTS + '=ingredient')
+      this.$router.push(paths.BROWSE_BY_INGREDIENTS + '=' + this.ingredient)
     }
   },
   watch: {

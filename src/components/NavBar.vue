@@ -46,7 +46,7 @@ export default {
           <router-link :to="paths.RANDOM_RECIPE" class="web-link">Get A Recipe</router-link>
         </li>
         <li>
-          <router-link :to="paths.BROWSE_ALL_RECIPE" class="web-link">Browse Recipes</router-link>
+          <router-link :to="paths.BROWSE_BY_ALPHABET" class="web-link">Browse Recipes</router-link>
         </li>
         <li>
           <router-link :to="paths.BROWSE_BY_SEARCH" class="web-link">Search Recipes</router-link>
@@ -75,9 +75,8 @@ export default {
         class="container space-y-3 font-body-thin text-sm text-white *:cursor-pointer *:select-none"
       >
         <li @click="onClickRoute(paths.RANDOM_RECIPE)">Get a recipe</li>
-        <li @click="onClickRoute(paths.BROWSE_ALL_RECIPE)">Browse recipes</li>
+        <li @click="onClickRoute(paths.BROWSE_BY_ALPHABET)">Browse recipes</li>
         <li @click="onClickRoute(paths.BROWSE_BY_SEARCH)">Search recipes</li>
-        <li @click="onClickRoute(paths.ABOUT_US)">About us</li>
       </ul>
     </div>
     <!-- #EndRegion Home Page Mobile Menu-->

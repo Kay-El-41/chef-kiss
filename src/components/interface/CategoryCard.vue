@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     goToBrowsePage() {
-      this.$router.push(`${paths.BROWSE_BY_CATEGORY}=${this.category?.idCategory}`)
+      this.$router.push(`${paths.BROWSE_BY_CATEGORY}=${this.category?.strCategory}`)
     }
   }
 }

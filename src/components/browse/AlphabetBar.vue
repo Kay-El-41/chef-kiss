@@ -53,7 +53,7 @@ export default {
       v-for="alphabet in alphabets"
       @click="() => handleSubmitSearch(alphabet)"
       :key="alphabet"
-      class="h-10 w-10 rounded-lg border hover:border-red-500"
+      class="h-10 w-10 rounded-lg border font-body hover:border-red-500"
       :class="currentAlphabet === alphabet && 'bg-red-500 text-white'"
     >
       {{ alphabet }}

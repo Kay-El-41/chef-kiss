@@ -22,6 +22,9 @@ dependencies:
     version: 4.2.5(vue@3.4.15)
 
 devDependencies:
+  '@locator/runtime':
+    specifier: ^0.4.3
+    version: 0.4.3
   '@rushstack/eslint-patch':
     specifier: ^1.3.3
     version: 1.7.2
@@ -335,6 +338,23 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
+  /@floating-ui/core@1.6.0:
+    resolution: {integrity: sha512-PcF++MykgmTj3CIyOQbKA/hDzOAiqI3mhuoN44WRCopIs1sgoDoU4oty4Jtqaj/y3oDU6fnVSm4QG0a3t5i0+g==}
+    dependencies:
+      '@floating-ui/utils': 0.2.1
+    dev: true
+
+  /@floating-ui/dom@1.6.1:
+    resolution: {integrity: sha512-iA8qE43/H5iGozC3W0YSnVSW42Vh522yyM1gj+BqRwVsTNOyr231PsXDaV04yT39PsO0QL2QpbI/M0ZaLUQgRQ==}
+    dependencies:
+      '@floating-ui/core': 1.6.0
+      '@floating-ui/utils': 0.2.1
+    dev: true
+
+  /@floating-ui/utils@0.2.1:
+    resolution: {integrity: sha512-9TANp6GPoMtYzQdt54kfAyMmz1+osLlXdg2ENroU7zzrtflTLrrC/lgrIfaSe+Wu0b89GKccT7vxXA0MoAIO+Q==}
+    dev: true
+
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
@@ -394,6 +414,23 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /@locator/runtime@0.4.3:
+    resolution: {integrity: sha512-4qzPUnQE3ePmqQpXdM3hk2nhYXLsyh8dN8Myf0GbxsbDULqs5XOJexkWzyT2h/boxz2pEBpepVm1wBWwCKEU4A==}
+    dependencies:
+      '@floating-ui/dom': 1.6.1
+      '@locator/shared': 0.4.3
+      solid-js: 1.8.12
+      tailwindcss: 3.4.1
+    transitivePeerDependencies:
+      - ts-node
+    dev: true
+
+  /@locator/shared@0.4.3:
+    resolution: {integrity: sha512-Sf++c0IpLgzt6J1Aqnvaoy3ALGrga99vYMUu+Xs/yFXmf2iNqjGKkm259ZgjB+4m47TQTqTEK2LKFz6BBkR+Jw==}
+    dependencies:
+      semver: 7.5.4
     dev: true
 
   /@nodelib/fs.scandir@2.1.5:
@@ -1752,6 +1789,20 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
+  /seroval-plugins@1.0.4(seroval@1.0.4):
+    resolution: {integrity: sha512-DQ2IK6oQVvy8k+c2V5x5YCtUa/GGGsUwUBNN9UqohrZ0rWdUapBFpNMYP1bCyRHoxOJjdKGl+dieacFIpU/i1A==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      seroval: ^1.0
+    dependencies:
+      seroval: 1.0.4
+    dev: true
+
+  /seroval@1.0.4:
+    resolution: {integrity: sha512-qQs/N+KfJu83rmszFQaTxcoJoPn6KNUruX4KmnmyD0oZkUoiNvJ1rpdYKDf4YHM05k+HOgCxa3yvf15QbVijGg==}
+    engines: {node: '>=10'}
+    dev: true
+
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
     engines: {node: '>=8'}
@@ -1767,6 +1818,14 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
+    dev: true
+
+  /solid-js@1.8.12:
+    resolution: {integrity: sha512-sLE/i6M9FSWlov3a2pTC5ISzanH2aKwqXTZj+bbFt4SUrVb4iGEa7fpILBMOxsQjkv3eXqEk6JVLlogOdTe0UQ==}
+    dependencies:
+      csstype: 3.1.3
+      seroval: 1.0.4
+      seroval-plugins: 1.0.4(seroval@1.0.4)
     dev: true
 
   /source-map-js@1.0.2:
