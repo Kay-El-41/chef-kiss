@@ -1,12 +1,13 @@
 <script>
+import * as actions from '@/services/actions'
 import MainLayout from '@/layouts/MainLayout.vue'
 import SearchBar from '@/components/browse/SearchBar.vue'
+import CountryBar from '@/components/browse/CountryBar.vue'
+import RecipesList from '@/components/browse/RecipesList.vue'
 import CategoryBar from '@/components/browse/CategoryBar.vue'
+import AlphabetBar from '@/components/browse/AlphabetBar.vue'
 import BackButton from '@/components/interface/BackButton.vue'
 import BrowseMethods from '@/components/browse/BrowseMethods.vue'
-import * as actions from '@/services/actions'
-import CountryBar from '@/components/browse/CountryBar.vue'
-import AlphabetBar from '@/components/browse/AlphabetBar.vue'
 import IngredientBar from '@/components/browse/IngredientBar.vue'
 
 export default {
@@ -18,7 +19,8 @@ export default {
     CategoryBar,
     CountryBar,
     AlphabetBar,
-    IngredientBar
+    IngredientBar,
+    RecipesList
   },
   data() {
     return {
@@ -30,7 +32,8 @@ export default {
       recipes: [],
       categories: [],
       countries: [],
-      ingredients: []
+      ingredients: [],
+      functionToFetch: ''
     }
   },
   async created() {
@@ -58,14 +61,46 @@ export default {
     currentMethod() {
       return this.$router.currentRoute.value.query.method
     }
-    // searchIngredientResult() {}
+  },
+  watch: {
+    currentMethod: {
+      handler() {
+        this.recipes = []
+        switch (this.currentMethod) {
+          case 'search':
+            this.functionToFetch = 'fetchMealRecipesBySearch'
+            break
+          case 'alphabet':
+            this.functionToFetch = 'fetchMealRecipesByFirstLetter'
+            break
+          case 'category':
+            this.functionToFetch = 'fetchMealRecipesByCategory'
+            break
+          case 'country':
+            this.functionToFetch = 'fetchMealRecipesByCountry'
+            break
+          case 'ingredient':
+            this.functionToFetch = 'fetchMealRecipesByMainIngredient'
+            break
+
+          default:
+            break
+        }
+      },
+      immediate: true
+    },
+    search: {
+      async handler() {
+        const { meals } = await actions[this.functionToFetch](this.search)
+        this.recipes = meals
+      },
+      immediate: true
+    }
   },
   methods: {
     async handleSearchInput(word) {
-      this.$router.replace({ query: { method: 'search', meal: word } })
       this.search = word
-      const { meals } = await actions.fetchMealRecipeBySearch(word)
-      this.recipes = meals
+      this.$router.replace({ query: { method: 'search', q: word } })
     },
     handleChangeAlphabet(alphabet) {
       this.search = alphabet
@@ -73,13 +108,13 @@ export default {
       this.$router.replace({ query: { method: 'alphabet', q: alphabet } })
     },
     handleChangeCategory(category) {
-      this.search = category.idCategory
+      this.search = category.strCategory
       this.currentCategoryId = category.idCategory
 
       this.$router.replace({
         query: {
           method: 'category',
-          q: category.idCategory
+          q: category.strCategory
         }
       })
     },
@@ -152,6 +187,10 @@ export default {
             @submitIngredient="handleChangeIngredient"
           />
         </div>
+      </div>
+      <div class="mt-3">
+        <!-- Meal Lists -->
+        <RecipesList :recipes="recipes" />
       </div>
     </section>
   </MainLayout>

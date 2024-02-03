@@ -20,7 +20,7 @@ const useBrowseStore = defineStore('browse', {
     async handleSearchInput(word) {
       this.$router.replace({ query: { method: 'search', meal: word } })
       this.search = word
-      const { meals } = await actions.fetchMealRecipeBySearch(word)
+      const { meals } = await actions.fetchMealRecipesBySearch(word)
       this.recipes = meals
     },
     handleChangeCategory(category) {

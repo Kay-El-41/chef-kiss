@@ -41,8 +41,6 @@ export default {
 
 <template>
   <MainLayout>
-    <!-- <div v-if="fetchError">SHIT WE ARE DONE</div> -->
-    <!-- v-if="!fetchError" -->
     <section class="container py-6">
       <div class="pb-6">
         <BackButton />
